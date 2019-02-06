@@ -9,7 +9,7 @@
   * Initialize the project by doing `npm init -y`.
 
 ## 2. Configuring Linter
-  * **Talking points:** the importance of linting.
+  * **Talking points:** the importance of linting. The eslint webpage.
   * Initialize using the command: `eslint --init`. You'll be presented with choices.
   * Choose `Use a popular style guide` option.
   * Choose `Airbnb`, with `React`, and `JSON` format for the config file.
