@@ -97,21 +97,14 @@
         },
       };
       ```
-  * Add loader to handle React code. This is the way `webpack.config.js` looks in the end:
+  * Add loader to handle React code to the `webpack.config.js` file:
       ```javascript
       var path = require('path');
 
       module.exports = {
-        mode: 'development',
-        entry: path.resolve(__dirname, 'index.js'),
-        output: {
-          path: path.resolve(__dirname, 'bundle'),
-          filename: 'bundle.js'
-        },
-        resolve: {
-          extensions: ['.js', '.jsx']
-        },
-        // how to handle files of each type
+        // etc
+        // mode, entry, output, resolve
+        // etc
         module: {
           rules: [
             {
