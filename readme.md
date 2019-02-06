@@ -1,6 +1,7 @@
 # Objectives
+  * Learn to set up a React project from scratch.
   * Learn about Eslint, Jest, Babel and Webpack.
-  * Understand some of the things CRA does for us.
+  * Appreciate the things Create React App does for us.
   * Feel warm and fuzzy that we don't _need_ CRA to start a project.
 
 # Requirements
