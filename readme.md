@@ -15,7 +15,7 @@
   * Inside `index.html` crete an empty div element with an `id` of `target`, which we'll use to attach our React application to the DOM.
   * Initialize the project by doing `npm init -y`.
 
-## 2. Configuring Linter
+## 2. Configuring the Linter
   * **Talking points:** the importance of linting. The eslint webpage.
   * Initialize using the command: `eslint --init`. You'll be presented with choices.
   * Choose `Use a popular style guide` option.
@@ -52,7 +52,8 @@
     ```javascript
     "test": "jest"
     ```
-  * Run `npm test -- --init` to get a generated test configuration file. You will be asked some questions. The important one is what environment to use (jsdom).
+  * Run `npm test -- --init` to get a generated test configuration file. You will be asked some questions.
+  * Choose environment to use: `jsdom` (browser).
   * Tests can be run by typing `npm test` from now on.
 
 ## 4. Configuring the Transpiler
