@@ -1,5 +1,5 @@
 ## 0. Requirements
-`Node` & `npm`, and packages `live-server` and `eslint` installed _globally_. VSCode `eslint` _extension_ recommended. Command line commands are assumed to be run inside the project folder. This guide uses npm but should work the same using yarn.
+`Node` & `npm`, and packages `live-server` and `eslint` installed _globally_. VSCode `eslint` extension recommended. Command line commands are assumed to be run inside the project folder. This guide uses npm but should work the same using yarn.
 
 ## 1. Project Structure
   * Create `index.html` and `index.js` files at the root of the project.
