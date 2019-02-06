@@ -73,7 +73,7 @@
       ]
     }
     ```
-  * `@babel/preset-env` will configure itself according to the desired target or targets. Edit browser and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, everything will get compiled down to ES5.
+  * `@babel/preset-env` will configure itself according to the desired target or targets. Edit browser and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, all the JavaScript code will get transpiled down to ES5.
 
 ## 5. Configuring the Bundler
   * **Talking points:** concatenation, minification, uglification, the problem of fetching many assets over http.
