@@ -1,6 +1,12 @@
-## 0. Requirements
+# Objectives
+  * Learn about Eslint, Jest, Babel and Webpack.
+  * Understand some of the things CRA does for us.
+  * Feel warm and fuzzy that we don't _need_ CRA to start a project.
+
+# Requirements
 `Node` & `npm`, and packages `live-server` and `eslint` installed _globally_. VSCode `eslint` extension recommended. Command line commands are assumed to be run inside the project folder. This guide uses npm but should work the same using yarn.
 
+# Steps
 ## 1. Project Structure
   * Create `index.html` and `index.js` files at the root of the project.
   * Inside `index.html` create a script tag pointing to a non-existing (Webpack will make it!) bundle file:
@@ -162,6 +168,7 @@
     ```javascript
       {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
