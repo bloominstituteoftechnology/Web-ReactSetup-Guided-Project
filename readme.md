@@ -177,7 +177,7 @@
       }
     ```
   * Import your less file into `index.js` using the following syntax:
-    * `import './index.less;`
+    * `import './index.less';`
   * Remember to restart webpack to get the configuration changes.
 
 ## 8. Final Touches
