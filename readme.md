@@ -9,7 +9,7 @@
   * Initialize the project by doing `npm init -y`.
 
 ## 2. Configuring Linter
-  * **Talking points**: the importance of linting.
+  * **Talking points:** the importance of linting.
   * Initialize using the command: `eslint --init`. You'll be presented with choices.
   * Choose `Use a popular style guide` option.
   * Choose `Airbnb`, with `React`, and `JSON` format for the config file.
@@ -39,7 +39,7 @@
     ```
 
 ## 3. Configuring Testing
-  * Talking points: the importance of testing. Untested code is legacy code.
+  * **Talking points:** the importance of testing. Untested code is legacy code.
   * Install `jest` using the command `npm i --save-dev jest`.
   * Edit `package.json` file so the `test` script looks like this:
     ```javascript
@@ -49,7 +49,7 @@
   * Tests can be run by typing `npm test` from now on.
 
 ## 4. Configuring the Transpiler
-  * Talking points: transcompiling, the babel website.
+  * **Talking points:** transcompiling, the babel website.
   * We need the following dev-dependencies:
     * @babel/core
     * @babel/preset-env
@@ -68,7 +68,7 @@
   * `@babel/preset-env` will configure itself according to the desired target or targets. Edit browser and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, everything will get compiled down to ES5.
 
 ## 5. Configuring the Bundler
-  * Talking points: concatenation, minification, uglification, the problem of fetching many assets over http.
+  * **Talking points:** concatenation, minification, uglification, the problem of fetching many assets over http.
   * We need the following dev-dependencies:
     * webpack
     * webpack-cli
@@ -127,7 +127,7 @@
     ```
 
 ## 6. Creating a Barebones React App
-  * Talking points: difference between React and React DOM.
+  * **Talking points:** difference between React and React DOM.
   * Install React and React DOM: `npm i --save react react-dom`
   * Edit index.js as follows:
     ```javascript
