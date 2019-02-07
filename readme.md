@@ -5,21 +5,21 @@
   * Feel warm and fuzzy that we don't _need_ CRA to start a project.
 
 # Requirements
-`Node` & `npm`, and packages `live-server` and `eslint` installed _globally_. VSCode `eslint` extension recommended. Command line commands are run inside the project folder. This guide uses npm but should work the same using yarn.
+We need `node` & `npm`, as well as packages `live-server` and `eslint` installed _globally_. VSCode's `eslint` extension is recommended. Command line commands are run inside the project folder. This guide uses npm but should work the same using yarn.
 
 # Steps
 ## 1. Project Structure
   * Create `index.html` and `index.js` files at the root of the project.
-  * Inside `index.html` create a script tag pointing to a non-existing (Webpack will make it!) bundle file:
+  * Inside `index.html`, scaffold a basic html document and create a script tag pointing to a non-existing (for now!) bundle file:
     * ```<script src="bundle/bundle.js"></script>```
-  * Inside `index.html` crete an empty div element with an `id` of `target`, which we'll use to attach our React application to the DOM.
-  * Initialize the project by doing `npm init -y`.
+  * Inside `index.html`, create a div element with an `id` of `target`, which we'll use to attach our React application to the DOM.
+  * Initialize the project by running `npm init -y`.
 
 ## 2. Configuring the Linter
   * **Talking points:** the importance of linting. The eslint webpage.
   * Initialize using the command: `eslint --init`. You'll be presented with choices.
   * Choose `Use a popular style guide` option.
-  * Choose `Airbnb`, with `React`, and `JSON` format for the config file.
+  * Choose `Airbnb`, with `React`, and `JSON` format.
   * Allow required dependencies to be installed with npm.
   * Edit the automatically created `.eslintrc.json` file to look like this (intellisense helps):
     ```javascript
@@ -52,9 +52,9 @@
     ```javascript
     "test": "jest"
     ```
-  * Run `npm test -- --init` to get a generated test configuration file. You will be asked some questions.
-  * Choose environment to use: `jsdom` (browser).
-  * Tests can be run by typing `npm test` from now on.
+  * Run `npm test -- --init` to get an automatically generated jest configuration file. You will be asked some questions.
+  * When asked, choose environment to use: `jsdom` (browser).
+  * Tests can be run by typing `npm test`.
 
 ## 4. Configuring the Transpiler
   * **Talking points:** transcompiling, the babel website.
@@ -73,7 +73,7 @@
       ]
     }
     ```
-  * `@babel/preset-env` will configure itself according to the desired target or targets. Edit browser and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, all the JavaScript code will get transpiled down to ES5.
+  * `@babel/preset-env` will configure itself according to the desired targets. Edit browser name and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, all the JavaScript code will get transpiled down to ES5, which might be overkill depending on project requirements.
 
 ## 5. Configuring the Bundler
   * **Talking points:** concatenation, minification, uglification, the problem of fetching many assets over http.
@@ -105,7 +105,7 @@
         },
       };
       ```
-  * Add loader to handle React code to the `webpack.config.js` file:
+  * Add a new `module` key to `webpack.config.js` file:
       ```javascript
       var path = require('path');
 
@@ -178,13 +178,22 @@
         ]
       }
     ```
-  * Import your less file into `index.js` using the following syntax:
+  * Create an `index.less` file at the root, add some styles and import it into `index.js` using the following syntax:
     * `import './index.less';`
-  * Remember to restart webpack to get the configuration changes.
+  * Remember to restart webpack in order to get the configuration changes.
 
 ## 8. Final Touches
   * Initialize git repository.
   * Add `node_modules` and `bundle` folders to `.gitignore`.
-  * Exclude configuration files from being linted by creating a top-level `.eslintignore` file.
-  * Add annoying Airbnb rules to the `eslintrc.json` file with a value of `0`.
+  * Prevent configuration files from being linted by creating a top-level `.eslintignore` file.
+  * Add annoying Airbnb rules to the `eslintrc.json` file with a value of `0` (1 means warning, 2 means error):
+  ```javascript
+    {
+      // etc
+      "rules": {
+          "semi": 2,
+          "annoying-rule-we-want-disabled": 0
+      }
+    }
+  ```
   * Move the React code into `./src/RootComponent` folder and have `index.js` import `RootComponent`.
