@@ -214,13 +214,13 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
   * Add `node_modules` and `bundle` folders to `.gitignore`.
   * Prevent configuration files from being linted by creating a top-level `.eslintignore` file.
   * Add annoying Airbnb rules to the `eslintrc.json` file with a value of `0` (1 means warning, 2 means error):
-  ```javascript
-    {
-      // etc
-      "rules": {
-          "semi": 2,
-          "annoying-rule-we-want-disabled": 0
+    ```javascript
+      {
+        // etc
+        "rules": {
+            "semi": 2,
+            "annoying-rule-we-want-disabled": 0
+        }
       }
-    }
-  ```
+    ```
   * Move the React code into `./src/RootComponent` folder and have `index.js` import `RootComponent`.
