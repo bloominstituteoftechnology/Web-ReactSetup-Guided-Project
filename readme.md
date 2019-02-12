@@ -67,7 +67,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
   * Put this configuration inside `babel.config.js`:
     ```javascript
     module.exports = {
-      "presets": [
+      presets: [
         ["@babel/preset-env", { "targets": { "chrome": "60" } }],
         "@babel/preset-react"
       ]
@@ -182,7 +182,34 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
     * `import './index.less';`
   * Remember to restart webpack in order to get the configuration changes.
 
-## 8. Final Touches
+## 8. Adding Support for Class Properties in React Components
+  * Run `npm i --save-dev @babel/plugin-proposal-class-properties`.
+  * Add a `plugins` key to `babel.config.js`:
+    ```javascript
+      module.exports = {
+        presets: [
+          ["@babel/preset-env", { "targets": { "chrome": "60" } }],
+          "@babel/preset-react"
+        ],
+        plugins: [
+          '@babel/plugin-proposal-class-properties'
+        ]
+      }
+    ```
+
+## 9. Removing Linting Error with Arrow Functions in React Components
+  * With arrow functions we don't need to bind `this` in the constructor.
+  * Run `npm i --save-dev babel-eslint`.
+  * Inside `.eslintrc` add a `parser` key:
+    ```javascript
+      {
+        "extends": "airbnb",
+        "parser": "babel-eslint",
+        // etc
+      }
+     ```
+
+## 10. Final Touches
   * Initialize git repository.
   * Add `node_modules` and `bundle` folders to `.gitignore`.
   * Prevent configuration files from being linted by creating a top-level `.eslintignore` file.
