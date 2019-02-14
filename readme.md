@@ -1,3 +1,9 @@
+# How to Run this App
+  * Clone repository.
+  * Run `npm install` or `yarn install`.
+  * Run `npm run dev` or `yarn run dev`.
+  * Serve `index.html` using `live-server` or similar.
+
 # Objectives
   * Learn to set up a React project from scratch.
   * Learn about Eslint, Jest, Babel and Webpack.
