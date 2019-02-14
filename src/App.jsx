@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.less';
 
 
-export default function RootComponent() {
+export default function App() {
   return (
     <div>Hello World</div>
   );
 }
 
 ReactDOM.render(
-  <RootComponent />, document.querySelector('#target'),
+  <App />, document.querySelector('#target'),
 );

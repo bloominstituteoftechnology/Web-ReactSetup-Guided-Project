@@ -208,8 +208,10 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
         // etc
       }
      ```
+## 10. Have the Bundler Generate a Source Map
+  * Add the following field to `webpack.config.js`
 
-## 10. Final Touches
+## 11. Final Touches
   * Initialize git repository.
   * Add `node_modules` and `bundle` folders to `.gitignore`.
   * Prevent configuration files from being linted by creating a top-level `.eslintignore` file.
@@ -219,8 +221,9 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
         // etc
         "rules": {
             "semi": 2,
-            "annoying-rule-we-want-disabled": 0
+            "annoying-rule-we-want-disabled": 0,
+            // etc
         }
       }
     ```
-  * Move the React code into `./src/RootComponent` folder and have `index.js` import `RootComponent`.
+  * Move the React code into `./src/App.jsx` and have `index.js` import `App`.

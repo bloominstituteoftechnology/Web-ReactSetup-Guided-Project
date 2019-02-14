@@ -1,1 +1,1 @@
-import './src/RootComponent';
+import './src/App';
