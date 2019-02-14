@@ -279,4 +279,3 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
         }
       }
     ```
-  * Move the React code into `./src/App.jsx` and have `index.js` import `App`.
