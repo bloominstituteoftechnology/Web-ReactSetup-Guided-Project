@@ -215,7 +215,10 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       }
      ```
 ## 10. Have the Bundler Generate a Source Map
-  * Add the following field to `webpack.config.js`
+  * Add the following field to the configuration in `webpack.config.js`:
+    ```javascript
+      devtool: 'source-map',
+    ```
 
 ## 11. Final Touches
   * Initialize git repository.
