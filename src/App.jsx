@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloWorld from './components/HelloWorld';
+import Container from './components/Container';
 
 
 ReactDOM.render(
-  <HelloWorld />, document.querySelector('#target'),
+  <Container />, document.querySelector('#target'),
 );
