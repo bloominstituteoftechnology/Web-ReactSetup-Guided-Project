@@ -264,7 +264,21 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       devtool: 'source-map',
     ```
 
-## 12. Final Touches
+## 12. Use Webpack Bundle Analyzer Plugin
+  * This allows to visually inspect the weight of our npm dependencies.
+  * Install Webpack Bundle Analyzer by running `npm i --save-dev webpack-bundle-analyzer`.
+  * Pull the analyzer in at the top of `webpack.config.js`.
+    ```javascript
+      var BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    ```
+  * Create a plugins property on the module.exports object in `webpack.config.js`.
+    ```javascript
+      plugins: [
+        new BundleAnalyzer()
+      ],
+    ```
+
+## 13. Final Touches
   * Initialize git repository.
   * Add `node_modules` and `bundle` folders to `.gitignore`.
   * Prevent configuration files from being linted by creating a top-level `.eslintignore` file.

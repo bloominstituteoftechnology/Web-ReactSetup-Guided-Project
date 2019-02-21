@@ -1,4 +1,6 @@
 var path = require('path');
+var BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports = {
   mode: 'development',
@@ -11,6 +13,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.less']
   },
+  plugins: [
+    // new BundleAnalyzer()
+  ],
   module: {
     rules: [
       {
