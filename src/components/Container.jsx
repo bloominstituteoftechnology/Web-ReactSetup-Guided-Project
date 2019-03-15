@@ -1,14 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './Container.less';
 
 
-export function Container(props) {
+export default function Container() {
   return (
     <div className='container-hello-world'>
-      <button onClick={() => props.dispatch({ type: 'HELLO_SAGA' })}>salute saga</button>
+      Hello, World
     </div>
   );
 }
-
-export default connect(st => st)(Container);
