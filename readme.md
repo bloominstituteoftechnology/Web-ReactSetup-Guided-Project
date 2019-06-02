@@ -1,7 +1,7 @@
 # How to Run this App
   * Clone repository.
   * Run `npm install` or `yarn install`.
-  * Run `npm run dev` or `yarn run dev`.
+  * Run `npm run dev` or `yarn dev`.
   * Run `npm test` or `yarn test`.
 
 # Objectives
