@@ -3,7 +3,6 @@
   * Run `npm install` or `yarn install`.
   * Run `npm run dev` or `yarn run dev`.
   * Run `npm test` or `yarn test`.
-  * Serve `index.html` using `live-server` or similar.
 
 # Objectives
   * Learn to set up a React project from scratch.
@@ -12,19 +11,29 @@
   * Feel warm and fuzzy that we don't _need_ CRA to start a project.
 
 # Requirements
-We need `node` & `npm`, as well as packages `live-server` and `eslint` installed _globally_. VSCode's `eslint` extension is recommended. Command line commands are run inside the project folder. This guide uses npm but should work the same using yarn.
+We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is recommended. Commands are run inside the project folder.
 
 # Steps
 ## 1. Project Structure
   * Create `index.html` and `index.js` files at the root of the project.
   * Inside `index.html`, scaffold a basic html document and create a script tag pointing to a non-existing (for now!) bundle file:
-    * ```<script src="bundle/bundle.js"></script>```
+    * ```<script defer src="bundle/bundle.js"></script>```
   * Inside `index.html`, create a div element with an `id` of `target`, which we'll use to attach our React application to the DOM.
   * Initialize the project by running `npm init -y`.
+  * Open the generated `package.json` and edit the `scripts` property:
+    ```javascript
+    // etc
+    "scripts": {
+      "test": "jest --watch",
+      "dev": "webpack-dev-server",
+      "webpack": "webpack --watch"
+    },
+    // etc
+    ```
 
 ## 2. Configuring the Linter
   * **Talking points:** the importance of linting. The eslint webpage.
-  * Initialize using the command: `eslint --init`. You'll be presented with choices.
+  * Initialize using the command: `npx eslint --init`. You'll be presented with choices.
   * Choose `Use a popular style guide` option.
   * Choose `Airbnb`, with `React`, and `JSON` format.
   * Allow required dependencies to be installed with npm.
@@ -55,16 +64,8 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
 ## 3. Configuring Testing with Jest
   * **Talking points:** the importance of testing. Untested code is legacy code.
   * Install `jest` using the command `npm i --save-dev jest`.
-  * Edit `package.json` file so the `test` script looks like this:
-    ```javascript
-      "test": "jest"
-    ```
-  * Run `npm test -- --init` to get an automatically generated jest configuration file. You will be asked some questions.
+  * Run `npx jest --init` to get an automatically generated jest configuration file. You will be asked some questions.
   * When asked, choose environment to use: `jsdom` (browser).
-  * After finishing answering questions you can change the script in `package.json` to be:
-    ```javascript
-      "test": "jest --watchAll"
-    ```
   * Create a top-level folder named `setup_tests`.
   * Inside `setup_tests`, create a `__mocks__` folder.
   * Inside `__mocks__` folder, create `fileMock.js` and `styleMock.js` files.
@@ -106,7 +107,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       ],
     ```
 
-## 5. Configuring the Transpiler
+## 5. Configuring Babel
   * **Talking points:** transcompiling, the babel website.
   * We need the following dev-dependencies:
     * @babel/core
@@ -125,15 +126,13 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
     ```
   * `@babel/preset-env` will configure itself according to the desired targets. Edit browser name and version to get more or less aggressive transpiling of the code. Without this `{ "targets": etc etc } ` configuration object, all the JavaScript code will get transpiled down to ES5, which might be overkill depending on project requirements.
 
-## 6. Configuring the Bundler
+## 6. Configuring Webpack
   * **Talking points:** concatenation, minification, uglification, the problem of fetching many assets over http.
   * We need the following dev-dependencies:
     * webpack
     * webpack-cli
     * babel-loader
   * Run `npm i --save-dev webpack webpack-cli babel-loader`.
-  * Edit `package.json` and add a new script:
-    * `"dev": "webpack --watch"`.
   * Create a `webpack.config.js` file at the root of the project.
   * Edit `webpack.config.js` file to add a mode of operation, entry and output points, and extensions:
     ```javascript
@@ -199,7 +198,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
   * Run Live Server in a separate terminal: `live-server`
   * Run tests in a separate terminal: `npm test`
 
-## 8. Adding Support for LESS
+## 8. Adding Support for CSS and LESS
   * We need the following dev-dependencies:
     * less
     * less-loader
@@ -211,12 +210,12 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       {
         // etc
         resolve: {
-          extensions: ['.js', '.jsx', '.less']
+          extensions: ['.js', '.jsx', '.less', '.css']
         },
         // etc
       }
     ```
-  * Add the following object to the `rules` array inside `webpack.config.js`:
+  * Add the following objects to the `rules` array inside `webpack.config.js`:
     ```javascript
       {
         test: /\.less$/,
@@ -225,6 +224,14 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'less-loader' }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
         ]
       }
     ```

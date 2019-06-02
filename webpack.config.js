@@ -9,13 +9,18 @@ module.exports = {
     path: path.resolve(__dirname, 'bundle'),
     filename: 'bundle.js'
   },
-  devtool: 'source-map', 
+  devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '.less']
+    extensions: ['.js', '.jsx', '.less', '.css']
   },
   plugins: [
     // new BundleAnalyzer()
   ],
+  devServer: {
+    publicPath: path.resolve(__dirname, '/bundle/'),
+    historyApiFallback: true,
+    port: 9000
+  },
   module: {
     rules: [
       {
@@ -31,6 +36,13 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'less-loader' }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
         ]
       }
     ]
