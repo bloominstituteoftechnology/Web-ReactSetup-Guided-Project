@@ -1,8 +1,9 @@
 # How to Run this App
   * Clone repository.
-  * Run `npm install` or `yarn install`.
-  * Run `npm run dev` or `yarn dev`.
-  * Run `npm test` or `yarn test`.
+  * Run `npm install`.
+  * Run `npm run webpack` to bundle the app with a watcher.
+  * Run `npm run server` to launch the development web server.
+  * Run `npm test` to run tests.
 
 # Objectives
   * Learn to set up a React project from scratch.
@@ -15,6 +16,9 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
 
 # Steps
 ## 1. Project Structure
+  * We need the following dev-dependencies:
+    * live-server
+  * Run `npm add -D live-server`.
   * Create `index.html` and `index.js` files at the root of the project.
   * Inside `index.html`, scaffold a basic html document and create a script tag pointing to a non-existing (for now!) bundle file:
     * ```<script defer src="bundle/bundle.js"></script>```
@@ -24,9 +28,9 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
     ```javascript
     // etc
     "scripts": {
-      "test": "jest --watch",
-      "dev": "webpack-dev-server",
-      "webpack": "webpack --watch"
+      "server": "live-server",
+      "webpack": "webpack --watch",
+      "test": "jest --watchAll"
     },
     // etc
     ```
@@ -63,7 +67,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
 
 ## 3. Configuring Testing with Jest
   * **Talking points:** the importance of testing. Untested code is legacy code.
-  * Install `jest` using the command `npm i --save-dev jest`.
+  * Install `jest` using the command `npm add -D jest`.
   * Run `npx jest --init` to get an automatically generated jest configuration file. You will be asked some questions.
   * When asked, choose environment to use: `jsdom` (browser).
   * Create a top-level folder named `setup_tests`.
@@ -90,7 +94,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
   * We need the following dev-dependencies:
     * enzyme
     * enzyme-adapter-react-16
-  * Run `npm i --save-dev enzyme enzyme-adapter-react-16`.
+  * Run `npm add -D enzyme enzyme-adapter-react-16`.
   * Create a `setupTests.js` file inside the `setup_tests` top-level folder.
   * Add the following code to `setupTests.js`:
     ```javascript
@@ -113,7 +117,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
     * @babel/core
     * @babel/preset-env
     * @babel/preset-react
-  * Run `npm i --save-dev @babel/core @babel/preset-env @babel/preset-react`.
+  * Run `npm add -D @babel/core @babel/preset-env @babel/preset-react`.
   * Create a `babel.config.js` file at the root of the project.
   * Put this configuration inside `babel.config.js`:
     ```javascript
@@ -132,7 +136,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
     * webpack
     * webpack-cli
     * babel-loader
-  * Run `npm i --save-dev webpack webpack-cli babel-loader`.
+  * Run `npm add -D webpack webpack-cli babel-loader`.
   * Create a `webpack.config.js` file at the root of the project.
   * Edit `webpack.config.js` file to add a mode of operation, entry and output points, and extensions:
     ```javascript
@@ -178,7 +182,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
 
 ## 7. Creating a Barebones React App
   * **Talking points:** difference between React and React DOM.
-  * Install React and React DOM: `npm i --save react react-dom`
+  * Install React and React DOM: `npm add react react-dom`
   * Edit index.js as follows:
     ```javascript
     import React from 'react';
@@ -204,7 +208,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
     * less-loader
     * css-loader
     * style-loader
-  * Run `npm i --save-dev less less-loader css-loader style-loader`.
+  * Run `npm add -D less less-loader css-loader style-loader`.
   * Edit the `extensions` part inside `webpack.config.js` to look for `.less` files:
     ```javascript
       {
@@ -240,7 +244,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
   * Remember to restart webpack in order to get the configuration changes.
 
 ## 9. Adding Support for Class Properties in React Components
-  * Run `npm i --save-dev @babel/plugin-proposal-class-properties`.
+  * Run `npm add -D @babel/plugin-proposal-class-properties`.
   * Add a `plugins` key to `babel.config.js`:
     ```javascript
       module.exports = {
@@ -256,7 +260,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
 
 ## 10. Removing Linting Error with Arrow Functions in React Components
   * With arrow functions we don't need to bind `this` in the constructor.
-  * Run `npm i --save-dev babel-eslint`.
+  * Run `npm add -D babel-eslint`.
   * Inside `.eslintrc` add a `parser` key:
     ```javascript
       {
@@ -273,7 +277,7 @@ We need `node` version 8.1+ & `npm` version 5.2+. VSCode's `eslint` extension is
 
 ## 12. Use Webpack Bundle Analyzer Plugin
   * This allows to visually inspect the weight of our npm dependencies.
-  * Install Webpack Bundle Analyzer by running `npm i --save-dev webpack-bundle-analyzer`.
+  * Install Webpack Bundle Analyzer by running `npm add -D webpack-bundle-analyzer`.
   * Pull the analyzer in at the top of `webpack.config.js`.
     ```javascript
       var BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
